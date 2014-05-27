@@ -5,7 +5,7 @@ class YelpAPI
 
     payload = {
       ywsid: YWSID,
-      lat: lat
+      lat: lat,
       long: long
     }
 
