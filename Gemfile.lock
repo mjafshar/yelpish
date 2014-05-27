@@ -10,5 +10,5 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bubble-wrap
+  bubble-wrap (~> 1.6.0)
   rake
