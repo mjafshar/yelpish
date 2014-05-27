@@ -5,6 +5,8 @@ app/pixate_code.rb
 resources/*.nib
 resources/*.momd
 resources/*.storyboardc
+config/yelp.yaml
+config/constants.rb
 .DS_Store
 nbproject
 .redcar
@@ -16,4 +18,3 @@ nbproject
 .idea
 .dat*.*
 .bundle
-yelp.yaml

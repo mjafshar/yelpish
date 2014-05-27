@@ -4,7 +4,6 @@ GEM
     bubble-wrap (1.6.0)
       bubble-wrap-http (= 1.6.0)
     bubble-wrap-http (1.6.0)
-    motion-yaml (1.2)
     rake (10.3.2)
 
 PLATFORMS
@@ -12,5 +11,4 @@ PLATFORMS
 
 DEPENDENCIES
   bubble-wrap
-  motion-yaml
   rake
