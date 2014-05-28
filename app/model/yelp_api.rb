@@ -16,7 +16,5 @@ class YelpAPI
 
       @block.call(json, error)
     end
-
   end
-
 end

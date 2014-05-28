@@ -10,7 +10,9 @@ class Location
       lat = result[:to].latitude
       long = result[:to].longitude
       YelpAPI.search(lat, long) do |response|
-        @block.call(response)
+        sorted_response = response[:businesses].sort_by { |business| business[:distance]}
+
+        @block.call(sorted_response)
       end
     end
   end

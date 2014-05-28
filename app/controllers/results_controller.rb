@@ -8,7 +8,7 @@ class ResultsController < UITableViewController
   def init
     super
     Location.load do |response|
-      @businesses = response[:businesses]
+      @businesses = response
 
       self.tableView.reloadData
     end
