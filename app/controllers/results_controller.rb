@@ -8,8 +8,7 @@ class ResultsController < UITableViewController
   def init
     super
     Location.load do |response|
-      @response = response
-      @businesses = @response[:businesses]
+      @businesses = response[:businesses]
 
       self.tableView.reloadData
     end
@@ -32,7 +31,7 @@ class ResultsController < UITableViewController
     end
     business = @businesses[indexPath.row]
     cell.textLabel.text = business[:name]
-    cell.detailTextLabel.text = business[:content]
+    cell.detailTextLabel.text = business[:distance].to_s
 
     cell
   end

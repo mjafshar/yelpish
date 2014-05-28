@@ -4,6 +4,9 @@ class Location
     BW::Location.get do |result|
       BW::Location.stop
       p "To Lat #{result[:to].latitude}, Long #{result[:to].longitude}"
+      NSLog('=============================================================')
+      NSLog("To Lat #{result[:to].latitude}, Long #{result[:to].longitude}")
+      NSLog('=============================================================')
       lat = result[:to].latitude
       long = result[:to].longitude
       YelpAPI.search(lat, long) do |response|
