@@ -9,11 +9,17 @@ class Location
       NSLog('=============================================================')
       lat = result[:to].latitude
       long = result[:to].longitude
+
       YelpAPI.search(lat, long) do |response|
-        sorted_response = response[:businesses].sort_by { |business| business[:distance]}
+        businesses = response[:businesses]
+        sorted_response = sort_response(businesses)
 
         @block.call(sorted_response)
       end
     end
+  end
+
+  def self.sort_response(response)
+    response.sort_by { |business| business[:distance]}
   end
 end
