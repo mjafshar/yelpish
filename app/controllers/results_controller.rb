@@ -8,7 +8,13 @@ class ResultsController < UITableViewController
   def init
     super
     Location.load do |response|
-      @businesses = response
+      @businesses_hash = response
+
+      @businesses = []
+
+      @businesses_hash.each do |business|
+        @businesses << Business.new(business)
+      end
 
       self.tableView.reloadData
     end
@@ -30,8 +36,8 @@ class ResultsController < UITableViewController
       UITableViewCell.alloc.initWithStyle(UITableViewCellStyleSubtitle, reuseIdentifier:@reuseIdentifier)
     end
     business = @businesses[indexPath.row]
-    cell.textLabel.text = business[:name]
-    cell.detailTextLabel.text = business[:distance].to_s
+    cell.textLabel.text = business.name
+    cell.detailTextLabel.text = "#{business.category}, #{business.distance.round(1).to_s} miles away"
 
     cell
   end
