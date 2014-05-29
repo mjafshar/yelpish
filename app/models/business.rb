@@ -6,7 +6,6 @@ class Business
 
   def initialize(hash = {})
     hash.each { |key, value|
-      # if PROPERTIES.member? key.to_sym
       if self.respond_to?(key.to_s + "=")
         self.send((key.to_s + "=").to_s, value)
       end

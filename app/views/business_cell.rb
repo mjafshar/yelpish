@@ -1,22 +1,32 @@
 class BusinessCell < UITableViewCell
 
-  attr_accessor :primaryLabel
-  attr_accessor :secondaryLabel
+  attr_accessor :business
 
-  def createLabels
+  def create_labels
+    @business_name = UILabel.alloc.init
+    @business_name.textAlignment = UITextAlignmentLeft
+    @business_name.font = UIFont.systemFontOfSize(14)
 
-    @primaryLabel = UILabel.alloc.init
-    @primaryLabel.textAlignment = UITextAlignmentLeft
-    @primaryLabel.font = UIFont.systemFontOfSize(14)
+    @distance = UILabel.alloc.init
+    @distance.textAlignment = UITextAlignmentLeft
+    @distance.font = UIFont.systemFontOfSize(8)
 
-    @secondaryLabel = UILabel.alloc.init
-    @secondaryLabel.textAlignment = UITextAlignmentLeft
-    @secondaryLabel.font = UIFont.systemFontOfSize(8)
+    @image_view = UIImageView.alloc.initWithFrame([[0, 0], [0, 0]])
 
-    self.contentView.addSubview(@primaryLabel)
-    self.contentView.addSubview(@secondaryLabel)
+    self.contentView.addSubview(@business_name)
+    self.contentView.addSubview(@distance)
+    self.contentView.addSubview(@image_view)
 
     self
+  end
+
+  def populate_view
+    @business_name.text = business.name
+    @distance.text = business.distance.round(1).to_s
+
+    photo_data = NSData.alloc.initWithContentsOfURL(NSURL.URLWithString(business.photo_url_small))
+    @image = UIImage.imageWithData(photo_data)
+    @image_view.image = @image
   end
 
   def layoutSubviews
@@ -25,9 +35,8 @@ class BusinessCell < UITableViewCell
     contentRect = self.contentView.bounds
     boundsX = contentRect.origin.x
 
-    @primaryLabel.frame = CGRectMake(boundsX+70, 5, 200, 25)
-    @secondaryLabel.frame = CGRectMake(boundsX+70, 30, 100, 15)
-
+    @business_name.frame = CGRectMake(boundsX+70, 5, 200, 25)
+    @distance.frame = CGRectMake(boundsX+70, 30, 100, 15)
+    @image_view.frame = CGRectMake(boundsX+10, 5, 40, 40)
   end
-
 end

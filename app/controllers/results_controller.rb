@@ -32,20 +32,15 @@ class ResultsController < UITableViewController
     @reuseIdentifier ||= "ResultsCell"
 
     cell = tableView.dequeueReusableCellWithIdentifier(@reuseIdentifier) || begin
-      # UITableViewCell.alloc.initWithStyle(UITableViewCellStyleSubtitle, reuseIdentifier:@reuseIdentifier)
-      cell = BusinessCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier:@reuseIdentifier)
+      cell_view = BusinessCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier:@reuseIdentifier)
 
-      cell.createLabels
-      cell
+      cell_view.create_labels
+      cell_view
     end
-    business = @businesses[indexPath.row]
 
-    cell.primaryLabel.text = business.name
-    cell.secondaryLabel.text = business.distance.round(1).to_s
+    cell.business = @businesses[indexPath.row]
 
-    # cell.textLabel.text = business.name
-    # cell.detailTextLabel.text = "#{business.category}, #{business.is_closed}, #{business.distance.round(1).to_s} miles away"
-
+    cell.populate_view
     cell
   end
 
