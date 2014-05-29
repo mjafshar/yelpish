@@ -2,7 +2,7 @@ class BusinessCell < UITableViewCell
 
   attr_accessor :business
 
-  def create_labels
+  def create_subviews
     @business_name = UILabel.alloc.init
     @business_name.textAlignment = UITextAlignmentLeft
     @business_name.font = UIFont.systemFontOfSize(14)
@@ -20,7 +20,7 @@ class BusinessCell < UITableViewCell
     self
   end
 
-  def populate_view
+  def populate_subviews
     @business_name.text = business.name
     @distance.text = business.distance.round(1).to_s
 
