@@ -37,7 +37,7 @@ class ResultsController < UITableViewController
       cell_view.create_subviews
       cell_view
     end
-
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator
     cell.business = @businesses[indexPath.row]
 
     cell.populate_subviews
