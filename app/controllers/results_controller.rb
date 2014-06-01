@@ -34,17 +34,21 @@ class ResultsController < UITableViewController
     cell = tableView.dequeueReusableCellWithIdentifier(@reuseIdentifier) || begin
       cell_view = BusinessCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier:@reuseIdentifier)
 
-      cell_view.create_labels
+      cell_view.create_subviews
       cell_view
     end
-
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator
     cell.business = @businesses[indexPath.row]
 
-    cell.populate_view
+    cell.populate_subviews
     cell
   end
 
   def tableView(tableView, didSelectRowAtIndexPath:indexPath)
 
+  end
+
+  def tableView(tableView, heightForRowAtIndexPath:indexPath)
+    60
   end
 end
