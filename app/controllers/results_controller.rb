@@ -47,4 +47,8 @@ class ResultsController < UITableViewController
   def tableView(tableView, didSelectRowAtIndexPath:indexPath)
 
   end
+
+  def tableView(tableView, heightForRowAtIndexPath:indexPath)
+    60
+  end
 end
