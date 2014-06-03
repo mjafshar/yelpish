@@ -14,8 +14,8 @@ class BusinessCell < UITableViewCell
     @image_view = UIImageView.alloc.initWithFrame([[0, 0], [0, 0]])
     @image_view.layer.cornerRadius = 4.0
     @image_view.layer.masksToBounds = true
-    @image_view.layer.borderWidth = 2.0
-    @image_view.layer.borderColor = UIColor.blackColor
+    # @image_view.layer.borderWidth = 2.0
+    # @image_view.layer.borderColor = UIColor.blackColor
 
     self.contentView.addSubview(@business_name)
     self.contentView.addSubview(@distance)
