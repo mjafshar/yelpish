@@ -15,3 +15,4 @@ Motion::Project::App.setup do |app|
   app.name = 'yelpish'
   app.files << Dir.glob("./config/*.rb")
 end
+task :"build:simulator" => :"schema:build"
