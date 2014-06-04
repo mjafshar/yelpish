@@ -21,9 +21,17 @@ class YelpAPI
 
   def self.format_json(json)
     json.map do |business|
-      business.select do |key, value|
+      info = business.select do |key, value|
         BUSINESS_PROPERTIES.include?(key.to_sym)
       end
+      get_first_category(info)
     end
+  end
+
+  def self.get_first_category(info)
+    info[:category] = info[:categories].first[:name]
+    info.delete(:categories)
+
+    info
   end
 end
