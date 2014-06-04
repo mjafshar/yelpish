@@ -13,6 +13,7 @@ class ResultsController < UITableViewController
 
       @businesses_hash.each do |business|
         @businesses << Business.new(business)
+        cdq.save
       end
 
       self.tableView.reloadData

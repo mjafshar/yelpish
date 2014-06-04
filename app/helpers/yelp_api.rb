@@ -10,11 +10,20 @@ class YelpAPI
 
       if response.ok?
         json = BW::JSON.parse(response.body.to_s)
+        business_info = format_json(json[:businesses])
       else
         error = {error: "Error with the Yelp API"}
       end
 
-      @block.call(json, error)
+      @block.call(business_info, error)
+    end
+  end
+
+  def self.format_json(json)
+    json.map do |business|
+      business.select do |key, value|
+        BUSINESS_PROPERTIES.include?(key.to_sym)
+      end
     end
   end
 end
