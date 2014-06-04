@@ -1,6 +1,5 @@
-class Business
-  PROPERTIES = [:name, :photo_url_small, :distance, :is_closed, :category, :mobile_url]
-  PROPERTIES.each { |prop|
+class Business < CDQManagedObject
+  BUSINESS_PROPERTIES.each { |prop|
     attr_accessor prop
   }
 
