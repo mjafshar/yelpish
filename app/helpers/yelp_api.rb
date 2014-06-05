@@ -8,8 +8,9 @@ class YelpAPI
 
       if response.ok?
         json = BW::JSON.parse(response.body.to_s)
+        filtered_response = filter(json[:businesses])
 
-        yelp_response = format_json(json[:businesses])
+        yelp_response = {businesses: filtered_response}
       else
         yelp_response = {error: "Error with the Yelp API"}
       end
@@ -18,7 +19,7 @@ class YelpAPI
     end
   end
 
-  def self.format_json(json)
+  def self.filter(json)
     json.map do |business|
       info = business.select do |key, value|
         BUSINESS_PROPERTIES.include?(key.to_sym)
