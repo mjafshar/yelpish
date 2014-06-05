@@ -28,9 +28,8 @@ class BusinessCell < UITableViewCell
     @business_name.text = business.name
     @distance.text = business.distance.round(1).to_s
 
-    photo_data = NSData.alloc.initWithContentsOfURL(NSURL.URLWithString(business.photo_url_small))
-    @image = UIImage.imageWithData(photo_data)
-    @image_view.image = @image
+    image = UIImage.imageNamed(business.image_path)
+    @image_view.image = image
   end
 
   def layoutSubviews
