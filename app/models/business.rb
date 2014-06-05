@@ -1,8 +1,11 @@
 class Business < CDQManagedObject
   def self.prepare(businesses)
+    counter = 0
     info = businesses.map do |business|
+      counter += 1
       filter(business)
       get_first_category(business)
+      cache_image(business, counter)
     end
     info
   end
@@ -26,5 +29,29 @@ class Business < CDQManagedObject
     business.delete(:categories)
 
     business
+  end
+
+  def self.cache_image(info, counter)
+    image = encode_image(info[:photo_url_small])
+    image_name = "#{Time.now.to_s.gsub(/:|-| /,'')}-#{counter}.jpg"
+
+    write_image(image, image_name)
+    info[:image_path] = image_name
+
+    info
+  end
+
+  def self.encode_image(url)
+    photo_data = NSData.alloc.initWithContentsOfURL(NSURL.URLWithString(url))
+    image = UIImage.imageWithData(photo_data)
+    imageData = UIImage.UIImageJPEGRepresentation(image, 1)
+    encodedData = [imageData].pack("m0")
+  end
+
+  def self.write_image(image, image_name)
+    unpack = image.unpack("m0")
+    File.open("#{App.resources_path}/#{image_name}", "w+b") do |f|
+      f.write(unpack.first)
+    end
   end
 end
