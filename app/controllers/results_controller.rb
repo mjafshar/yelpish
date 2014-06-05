@@ -8,10 +8,10 @@ class ResultsController < UITableViewController
   def init
     super
     Location.load do |response|
-      if response.has_key?('businesses')
+      if response.has_key?(:businesses)
         Business.destroy_all
 
-        response.each do |business|
+        response[:businesses].each do |business|
           Business.create(business)
           cdq.save
         end
@@ -37,7 +37,7 @@ class ResultsController < UITableViewController
       cell_view
     end
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator
-    cell.business = Business.all.array[indexPath.row]
+    cell.business = Business.sort_by(:distance).all.array[indexPath.row]
 
     cell.populate_subviews
     cell

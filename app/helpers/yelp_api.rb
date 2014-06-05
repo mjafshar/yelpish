@@ -21,10 +21,10 @@ class YelpAPI
 
   def self.filter(json)
     json.map do |business|
-      info = business.select do |key, value|
+      business_info = business.select do |key, value|
         BUSINESS_PROPERTIES.include?(key.to_sym)
       end
-      get_first_category(info)
+      get_first_category(business_info)
     end
   end
 
