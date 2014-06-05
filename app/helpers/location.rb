@@ -1,6 +1,5 @@
 class Location
   def self.load(&block)
-    @block = block
     BW::Location.get do |result|
       BW::Location.stop
       p "To Lat #{result[:to].latitude}, Long #{result[:to].longitude}"
@@ -11,9 +10,13 @@ class Location
       long = result[:to].longitude
 
       YelpAPI.search(lat, long) do |response|
-        sorted_response = sort_response(response)
+        if response.is_a?(Hash)
+          location_response = response
+        else
+          location_response = sort_response(response)
+        end
 
-        @block.call(sorted_response)
+        block.call(location_response)
       end
     end
   end
