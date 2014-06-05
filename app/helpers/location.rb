@@ -10,10 +10,10 @@ class Location
       long = result[:to].longitude
 
       YelpAPI.search(lat, long) do |response|
-        if response.is_a?(Hash)
-          location_response = response
+        if response.has_key?('businesses')
+          location_response = sort_response(response[:businesses])
         else
-          location_response = sort_response(response)
+          location_response = response
         end
 
         block.call(location_response)

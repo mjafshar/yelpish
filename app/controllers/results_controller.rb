@@ -8,33 +8,23 @@ class ResultsController < UITableViewController
   def init
     super
     Location.load do |response|
-      @businesses = []
-      if response.is_a?(Hash)
-        Business.all.array.each do |business|
-          @businesses << business
-        end
-      else
-        # Clears DB before writing new data
-        Business.all.array.each do |business|
-          business.destroy
-        end
+      if response.has_key?('businesses')
+        Business.destroy_all
 
         response.each do |business|
-          @businesses << Business.new(business)
+          Business.create(business)
           cdq.save
         end
       end
+
       self.tableView.reloadData
     end
+
     self
   end
 
   def tableView(tableView, numberOfRowsInSection:section)
-    if @businesses
-      @businesses.count
-    else
-      0
-    end
+      Business.all.array.count
   end
 
   def tableView(tableView, cellForRowAtIndexPath:indexPath)
@@ -47,7 +37,7 @@ class ResultsController < UITableViewController
       cell_view
     end
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator
-    cell.business = @businesses[indexPath.row]
+    cell.business = Business.all.array[indexPath.row]
 
     cell.populate_subviews
     cell
