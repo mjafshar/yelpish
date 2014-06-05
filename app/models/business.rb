@@ -45,12 +45,12 @@ class Business < CDQManagedObject
     photo_data = NSData.alloc.initWithContentsOfURL(NSURL.URLWithString(url))
     image = UIImage.imageWithData(photo_data)
     imageData = UIImage.UIImageJPEGRepresentation(image, 1)
-    encodedData = [imageData].pack("m0")
+    [imageData].pack("m0")
   end
 
   def self.write_image(image, image_name)
     unpack = image.unpack("m0")
-    File.open("#{App.resources_path}/#{image_name}", "w+b") do |f|
+    File.open("#{App.resources_path}/photos_small/#{image_name}", "w+b") do |f|
       f.write(unpack.first)
     end
   end
