@@ -8,14 +8,22 @@ class ResultsController < UITableViewController
   def init
     super
     Location.load do |response|
-      @businesses_hash = response
       @businesses = []
+      if response.is_a?(Hash)
+        Business.all.array.each do |business|
+          @businesses << business
+        end
+      else
+        # Clears DB before writing new data
+        Business.all.array.each do |business|
+          business.destroy
+        end
 
-      @businesses_hash.each do |business|
-        @businesses << Business.new(business)
-        cdq.save
+        response.each do |business|
+          @businesses << Business.new(business)
+          cdq.save
+        end
       end
-
       self.tableView.reloadData
     end
     self
