@@ -10,8 +10,9 @@ class ResultsController < UITableViewController
     Location.load do |response|
       if response.has_key?(:businesses)
         Business.destroy_all
+        businesses = Business.prepare(response[:businesses])
 
-        response[:businesses].each do |business|
+        businesses.each do |business|
           Business.create(business)
           cdq.save
         end
