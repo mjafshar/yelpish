@@ -10,6 +10,7 @@ class ResultsController < UITableViewController
     Location.load do |response|
       if response.has_key?(:businesses)
         Business.destroy_all
+        FileManager.destroy_all
         businesses = Business.prepare(response[:businesses])
 
         businesses.each do |business|
