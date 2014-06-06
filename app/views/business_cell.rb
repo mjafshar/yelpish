@@ -28,7 +28,7 @@ class BusinessCell < UITableViewCell
     @business_name.text = business.name
     @distance.text = business.distance.round(1).to_s
 
-    image = UIImage.imageNamed("photos_small/#{business.image_path}")
+    image = UIImage.imageWithContentsOfFile("#{PHOTOS_SMALL}#{business.image_path}")
     @image_view.image = image
   end
 

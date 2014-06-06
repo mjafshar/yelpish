@@ -50,7 +50,8 @@ class Business < CDQManagedObject
 
   def self.write_image(image, image_name)
     unpack = image.unpack("m0")
-    File.open("#{App.resources_path}/photos_small/#{image_name}", "w+b") do |f|
+
+    File.open("#{PHOTOS_SMALL}/#{image_name}", "w+b") do |f|
       f.write(unpack.first)
     end
   end

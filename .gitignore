@@ -6,7 +6,7 @@ resources/*.nib
 resources/*.momd
 resources/*.storyboardc
 config/yelp.yaml
-config/constants.rb
+config/api.rb
 .DS_Store
 nbproject
 .redcar
