@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="0003 add address info" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2061" systemVersion="12D78" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+  <entity name="Business" syncable="YES" representedClassName="Business">
+    <attribute optional="YES" syncable="YES" attributeType="String" name="name"/>
+    <attribute optional="YES" syncable="YES" attributeType="String" name="photo_url_small"/>
+    <attribute optional="YES" syncable="YES" attributeType="Float" name="distance" defaultValueString="0.0"/>
+    <attribute optional="YES" syncable="YES" attributeType="Boolean" name="is_closed"/>
+    <attribute optional="YES" syncable="YES" attributeType="String" name="category"/>
+    <attribute optional="YES" syncable="YES" attributeType="String" name="mobile_url"/>
+    <attribute optional="YES" syncable="YES" attributeType="String" name="image_path"/>
+    <attribute optional="YES" syncable="YES" attributeType="String" name="address"/>
+  </entity>
+</model>
