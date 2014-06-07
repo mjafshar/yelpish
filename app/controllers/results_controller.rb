@@ -19,14 +19,16 @@ class ResultsController < UITableViewController
         end
       end
 
+      @businesses = Business.sort_by(:distance).all.array
       self.tableView.reloadData
     end
+    @businesses = Business.sort_by(:distance).all.array
 
     self
   end
 
   def tableView(tableView, numberOfRowsInSection:section)
-      Business.all.array.count
+      @businesses.count
   end
 
   def tableView(tableView, cellForRowAtIndexPath:indexPath)
@@ -39,7 +41,7 @@ class ResultsController < UITableViewController
       cell_view
     end
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator
-    cell.business = Business.sort_by(:distance).all.array[indexPath.row]
+    cell.business = @businesses[indexPath.row]
 
     cell.populate_subviews
     cell
