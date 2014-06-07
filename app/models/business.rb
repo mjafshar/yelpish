@@ -3,6 +3,7 @@ class Business < CDQManagedObject
     counter = 0
     info = businesses.map do |business|
       counter += 1
+      create_address(business)
       filter(business)
       get_first_category(business)
       cache_image(business, counter)
@@ -31,14 +32,20 @@ class Business < CDQManagedObject
     business
   end
 
-  def self.cache_image(info, counter)
-    image = encode_image(info[:photo_url_small])
+  def self.cache_image(business, counter)
+    image = encode_image(business[:photo_url_small])
     image_name = "#{Time.now.to_s.gsub(/:|-| /,'')}-#{counter}.jpg"
 
     write_image(image, image_name)
-    info[:image_path] = image_name
+    business[:image_path] = image_name
 
-    info
+    business
+  end
+
+  def self.create_address(business)
+    business[:address] = "#{business[:address1]}, #{business[:city]}, #{business[:zip]}"
+
+    business
   end
 
   def self.encode_image(url)
