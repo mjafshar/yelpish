@@ -48,7 +48,10 @@ class ResultsController < UITableViewController
   end
 
   def tableView(tableView, didSelectRowAtIndexPath:indexPath)
-
+    tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    business = @businesses[indexPath.row]
+    map_view = MapController.alloc.initWithAddress(business.address)
+    self.navigationController.pushViewController(map_view, animated:true)
   end
 
   def tableView(tableView, heightForRowAtIndexPath:indexPath)
