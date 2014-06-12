@@ -2,7 +2,7 @@ class ResultsController < UITableViewController
   def viewDidLoad
     self.tableView.delegate = self
     self.tableView.dataSource = self
-    self.title = "Results"
+    self.title = "Locations"
   end
 
   def init
@@ -50,7 +50,7 @@ class ResultsController < UITableViewController
   def tableView(tableView, didSelectRowAtIndexPath:indexPath)
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
     business = @businesses[indexPath.row]
-    map_view = MapController.alloc.initWithAddress(business.address)
+    map_view = MapController.alloc.initWithBusiness(business)
     self.navigationController.pushViewController(map_view, animated:true)
   end
 
