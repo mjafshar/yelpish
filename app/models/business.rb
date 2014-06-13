@@ -43,8 +43,11 @@ class Business < CDQManagedObject
   end
 
   def self.create_address(business)
-    business[:address] = "#{business[:address1]}, #{business[:city]}, #{business[:zip]}"
-
+    if !business[:address1].empty?
+      business[:address] = "#{business[:address1]}, #{business[:city]}, #{business[:zip]}"
+    else
+      business[:address] = "#{business[:city]}, #{business[:zip]}"
+    end
     business
   end
 

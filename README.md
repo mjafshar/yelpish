@@ -14,4 +14,3 @@ To run the app:
 5. Add your Yelp API key into the ```api.rb``` file: ```YWSID = 'XXXXXXXXXXXXXX-XXXXXXX'```.
 6. Make sure your device is provisioned to run iOS apps.
 7. Run ```rake``` from the command line.
-
