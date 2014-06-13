@@ -52,10 +52,10 @@ class BusinessCell < UITableViewCell
     content_rect = self.contentView.bounds
     origin = content_rect.origin
 
-    @business_name.frame = CGRectMake(origin.x + 90, 8, 200, 25)
+    @business_name.frame = CGRectMake(origin.x + 90, 8, 160, 25)
     @distance.frame = CGRectMake(origin.x + 90, 35, 100, 15)
     @category.frame = CGRectMake(origin.x + 90, 55, 100, 15)
-    @open.frame = CGRectMake(origin.x + 200, 12, 100, 15)
+    @open.frame = CGRectMake(origin.x + 200, 14, 100, 15)
     @image_view.frame = CGRectMake(origin.x + 12.5, 12.5, 60, 60)
   end
 
