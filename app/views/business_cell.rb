@@ -12,6 +12,11 @@ class BusinessCell < UITableViewCell
     @distance.font = UIFont.systemFontOfSize(12)
     @distance.textColor = UIColor.grayColor
 
+    @category = UILabel.alloc.init
+    @category.textAlignment = UITextAlignmentLeft
+    @category.font = UIFont.systemFontOfSize(12)
+    @category.textColor = UIColor.grayColor
+
     @image_view = UIImageView.alloc.initWithFrame([[0, 0], [0, 0]])
     @image_view.layer.cornerRadius = 4.0
     @image_view.layer.masksToBounds = true
@@ -20,6 +25,7 @@ class BusinessCell < UITableViewCell
 
     self.contentView.addSubview(@business_name)
     self.contentView.addSubview(@distance)
+    self.contentView.addSubview(@category)
     self.contentView.addSubview(@image_view)
 
     self
@@ -28,6 +34,7 @@ class BusinessCell < UITableViewCell
   def populate_subviews
     @business_name.text = business.name
     @distance.text = "#{business.distance.round(1).to_s} miles away"
+    @category.text = business.category
 
     image = UIImage.imageWithContentsOfFile("#{PHOTOS_SMALL}#{business.image_path}")
     @image_view.image = image
@@ -41,6 +48,7 @@ class BusinessCell < UITableViewCell
 
     @business_name.frame = CGRectMake(origin.x + 90, 8, 200, 25)
     @distance.frame = CGRectMake(origin.x + 90, 35, 100, 15)
+    @category.frame = CGRectMake(origin.x + 90, 55, 100, 15)
 
     @image_view.frame = CGRectMake(origin.x + 12.5, 12.5, 60, 60)
   end
