@@ -17,6 +17,10 @@ class BusinessCell < UITableViewCell
     @category.font = UIFont.systemFontOfSize(12)
     @category.textColor = UIColor.grayColor
 
+    @open = UILabel.alloc.init
+    @open.textAlignment = UITextAlignmentRight
+    @open.font = UIFont.systemFontOfSize(10)
+
     @image_view = UIImageView.alloc.initWithFrame([[0, 0], [0, 0]])
     @image_view.layer.cornerRadius = 4.0
     @image_view.layer.masksToBounds = true
@@ -26,6 +30,7 @@ class BusinessCell < UITableViewCell
     self.contentView.addSubview(@business_name)
     self.contentView.addSubview(@distance)
     self.contentView.addSubview(@category)
+    self.contentView.addSubview(@open)
     self.contentView.addSubview(@image_view)
 
     self
@@ -35,6 +40,7 @@ class BusinessCell < UITableViewCell
     @business_name.text = business.name
     @distance.text = "#{business.distance.round(1).to_s} miles away"
     @category.text = business.category
+    @open.text = open_or_closed_status(business.is_closed)
 
     image = UIImage.imageWithContentsOfFile("#{PHOTOS_SMALL}#{business.image_path}")
     @image_view.image = image
@@ -46,10 +52,20 @@ class BusinessCell < UITableViewCell
     content_rect = self.contentView.bounds
     origin = content_rect.origin
 
-    @business_name.frame = CGRectMake(origin.x + 90, 8, 200, 25)
+    @business_name.frame = CGRectMake(origin.x + 90, 8, 160, 25)
     @distance.frame = CGRectMake(origin.x + 90, 35, 100, 15)
     @category.frame = CGRectMake(origin.x + 90, 55, 100, 15)
-
+    @open.frame = CGRectMake(origin.x + 200, 14, 100, 15)
     @image_view.frame = CGRectMake(origin.x + 12.5, 12.5, 60, 60)
+  end
+
+  def open_or_closed_status(is_closed)
+    if !is_closed
+      @open.textColor = UIColor.grayColor
+      return 'CLOSED'
+    else
+      @open.textColor = UIColor.greenColor
+      return 'OPEN'
+    end
   end
 end
