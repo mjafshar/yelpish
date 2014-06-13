@@ -55,6 +55,6 @@ class ResultsController < UITableViewController
   end
 
   def tableView(tableView, heightForRowAtIndexPath:indexPath)
-    60
+    85
   end
 end
