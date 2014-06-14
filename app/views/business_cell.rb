@@ -6,16 +6,17 @@ class BusinessCell < UITableViewCell
     @business_name = UILabel.alloc.init
     @business_name.textAlignment = UITextAlignmentLeft
     @business_name.font = UIFont.systemFontOfSize(14)
+    @business_name.textColor = UIColor.darkGrayColor
 
     @distance = UILabel.alloc.init
     @distance.textAlignment = UITextAlignmentLeft
     @distance.font = UIFont.systemFontOfSize(12)
-    @distance.textColor = UIColor.grayColor
+    @distance.textColor = UIColor.lightGrayColor
 
     @category = UILabel.alloc.init
     @category.textAlignment = UITextAlignmentLeft
     @category.font = UIFont.systemFontOfSize(12)
-    @category.textColor = UIColor.grayColor
+    @category.textColor = UIColor.lightGrayColor
 
     @open = UILabel.alloc.init
     @open.textAlignment = UITextAlignmentRight
@@ -61,10 +62,10 @@ class BusinessCell < UITableViewCell
 
   def open_or_closed_status(is_closed)
     if !is_closed
-      @open.textColor = UIColor.grayColor
+      @open.textColor = UIColor.lightGrayColor
       return 'CLOSED'
     else
-      @open.textColor = UIColor.greenColor
+      @open.textColor = UIColor.colorWithRed(0.11, green:0.73, blue:0.26, alpha:1)
       return 'OPEN'
     end
   end

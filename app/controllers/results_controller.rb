@@ -1,5 +1,9 @@
 class ResultsController < UITableViewController
   def viewDidLoad
+    self.navigationController.navigationBar.setTranslucent(false)
+    self.navigationController.navigationBar.barTintColor = UIColor.colorWithRed(0, green:0.66, blue:0.89, alpha:1)
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque
+
     self.tableView.delegate = self
     self.tableView.dataSource = self
     self.title = "Locations"
