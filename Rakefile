@@ -15,6 +15,6 @@ Motion::Project::App.setup do |app|
   app.name = 'yelpish'
   app.files << Dir.glob("./config/*.rb")
   app.frameworks += ['MapKit']
-
+  app.fonts = ["LucidaGrande.ttc"]
 end
 task :"build:simulator" => :"schema:build"
