@@ -61,7 +61,7 @@ class BusinessCell < UITableViewCell
   end
 
   def open_or_closed_status(is_closed)
-    if !is_closed
+    if is_closed == 1
       @open.textColor = UIColor.lightGrayColor
       return 'CLOSED'
     else
