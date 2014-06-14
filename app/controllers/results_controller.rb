@@ -2,12 +2,10 @@ class ResultsController < UITableViewController
   def viewDidLoad
     nav_bar = self.navigationController.navigationBar
     nav_bar.setTranslucent(false)
+    nav_bar.tintColor = UIColor.whiteColor
     nav_bar.barTintColor = UIColor.colorWithRed(0, green:0.66, blue:0.89, alpha:1)
     nav_bar.barStyle = UIBarStyleBlackOpaque
-    nav_bar.setTitleTextAttributes({
-      UITextAttributeFont => UIFont.fontWithName('Lucida Grande', size: 20)
-    })
-    puts nav_bar.titleTextAttributes
+    nav_bar.setTitleTextAttributes({UITextAttributeFont => UIFont.fontWithName('Lucida Grande', size: 20)})
 
     self.tableView.delegate = self
     self.tableView.dataSource = self
