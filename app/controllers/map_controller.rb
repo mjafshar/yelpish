@@ -21,7 +21,7 @@ class MapController < UIViewController
 
   def get_location_from_address(address)
     geo_coder = CLGeocoder.alloc.init
-    NSLog("Address: #{address}")
+
     geo_coder.geocodeAddressString(address, completionHandler:lambda do |coord, error|
       if coord
         coords = coord.first.location.coordinate
@@ -35,9 +35,6 @@ class MapController < UIViewController
         self.view.region = region
         self.view.addAnnotation(placemarker)
       else
-        NSLog("Error Description: #{error.localizedDescription}")
-        NSLog("Failure Reason: #{error.localizedFailureReason}")
-        NSLog("Recovery Suggestion: #{error.localizedRecoverySuggestion}")
         error
       end
     end)
