@@ -5,22 +5,22 @@ class BusinessCell < UITableViewCell
   def create_subviews
     @business_name = UILabel.alloc.init
     @business_name.textAlignment = UITextAlignmentLeft
-    @business_name.font = UIFont.systemFontOfSize(14)
+    @business_name.font = UIFont.fontWithName('Lucida Grande', size: 16)
     @business_name.textColor = UIColor.darkGrayColor
 
     @distance = UILabel.alloc.init
     @distance.textAlignment = UITextAlignmentLeft
-    @distance.font = UIFont.systemFontOfSize(12)
+    @distance.font = UIFont.fontWithName('Lucida Grande', size: 12)
     @distance.textColor = UIColor.lightGrayColor
 
     @category = UILabel.alloc.init
     @category.textAlignment = UITextAlignmentLeft
-    @category.font = UIFont.systemFontOfSize(12)
+    @category.font = UIFont.fontWithName('Lucida Grande', size: 12)
     @category.textColor = UIColor.lightGrayColor
 
     @open = UILabel.alloc.init
     @open.textAlignment = UITextAlignmentRight
-    @open.font = UIFont.systemFontOfSize(10)
+    @open.font = UIFont.fontWithName('Lucida Grande', size: 10)
 
     @image_view = UIImageView.alloc.initWithFrame([[0, 0], [0, 0]])
     @image_view.layer.cornerRadius = 4.0
