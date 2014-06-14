@@ -39,7 +39,7 @@ class BusinessCell < UITableViewCell
     @business_name.text = business.name
     @distance.text = "#{business.distance.round(1).to_s} miles away"
     @category.text = business.category
-    @open.text = open_or_closed_status(business.is_closed)
+    set_open_or_closed_status
 
     image = UIImage.imageWithContentsOfFile("#{PHOTOS_SMALL}#{business.image_path}")
     @image_view.image = image
@@ -58,13 +58,13 @@ class BusinessCell < UITableViewCell
     @image_view.frame = CGRectMake(origin.x + 12.5, 12.5, 60, 60)
   end
 
-  def open_or_closed_status(is_closed)
-    if is_closed == 1
+  def set_open_or_closed_status
+    if business.is_closed == 1
       @open.textColor = UIColor.lightGrayColor
-      return 'CLOSED'
+      @open.text = 'CLOSED'
     else
       @open.textColor = UIColor.colorWithRed(0.11, green:0.73, blue:0.26, alpha:1)
-      return 'OPEN'
+      @open.text = 'OPEN'
     end
   end
 end
