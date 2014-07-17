@@ -3,7 +3,7 @@ Yelpish
 
 Yelpish is a RubyMotion iOS app that uses the Yelp API to list 20 nearby business sorted by distance to the users current location. The app also caches the business information into CoreData to allow useage when the phone is not connected to the internet.
 
-This is primarily a coding challenge to practice various programming and iOS patterns such as MVC and the Cocoa Touch framework. Requires RubyMotion to run.
+This is primarily a coding challenge to practice applying programming patterns, such as MVC, to a mobile app. Requires RubyMotion to run.
 
 To run the app:
 
